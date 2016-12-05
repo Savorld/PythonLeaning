@@ -144,7 +144,7 @@ DROP COLUMN column_name
                                         UNION
                                         SELECT column_name(s) FROM table2;
 
-                                        /***
+                                        aadsf
                                             默认地，UNION 操作符选取不同的值。
                                             如果允许重复的值，请使用 UNION ALL。
                                         ***/
@@ -152,6 +152,23 @@ DROP COLUMN column_name
                                         SELECT column_name(s) FROM table1
                                         UNION ALL
                                         SELECT column_name(s) FROM table2;
+
+                    15.聚合函数：
+                            AVG():
+                                  --->SELECT AVG(column_name) FROM table_name;
+
+                            COUNT():
+                                  --->SELECT COUNT(column_name) FROM table_name;
+                                      SELECT COUNT(*) FROM table_name;
+                            FIRST():
+                            LAST():
+                            SUM():
+                            MIN():
+                            MAX():
+
+
+
+
 
 
 
