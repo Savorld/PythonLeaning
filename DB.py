@@ -8,128 +8,128 @@ I.MySQL:
 
                 2.mysql -h 192.168.1.105 -u root -p:远程连接主机并以root身份登录数据库
                 3.show databases;                                       ->显示所有数据库
-                #4.create database [数据库名];                            ->创建数据库
+                4.create database [数据库名];                            ->创建数据库
                 5.use [数据库名];                                        ->选择要操作的数据库
-                #6.create table [数据表名] (字段1 字段1类型 字段1属性,字段2 ...);
-                # 7.describe [数据表名];
-                # 8.update [数据库列名] set [字段名]=[新value] where 更新条件;
-                # 9.drop table table_name;
-                8.#alter table [数据表名] ADD column_name datatype                   ->为表添加新字段
-                  #alter table [数据表名] DROP column_name                           ->删除表字段
-                #   alter table [数据表名] CHANGE column_name new_colum_name datatype ->改表字段
-                #   alter table [数据表名] RENAME new_table_name                      ->重命名表
+                6.create table [数据表名] (字段1 字段1类型 字段1属性,字段2 ...);
+                7.describe [数据表名];
+                8.update [数据库列名] set [字段名]=[新value] where 更新条件;
+                9.drop table table_name;
+                8.alter table [数据表名] ADD column_name datatype                   ->为表添加新字段
+                  alter table [数据表名] DROP column_name                           ->删除表字段
+                  alter table [数据表名] CHANGE column_name new_colum_name datatype ->改表字段
+                  alter table [数据表名] RENAME new_table_name                      ->重命名表
 
 or
 ALTER TABLE table_name
 DROP COLUMN column_name
                                                   ->查看表结构
         b)重要的SQL命令：
-                # 1.SELECT语句----->  SELECT column_name,column_name FROM table_name
-                #                     &&
-                #                     SELECT * FROM table_name;
-                # 2.DISTINCK语句----->SELECT DISTINCT column_name,column_name
+                1.SELECT语句----->  SELECT column_name,column_name FROM table_name
+                                    &&
+                                    SELECT * FROM table_name;
+                2.DISTINCK语句----->SELECT DISTINCT column_name,column_name
                 #                     FROM table_name;
-                # 3.WHERE语句-------->SELECT column_name,column_name
-                #                     FROM table_name WHERE column_name operator value;
-                # 4.GROUP BY语句----->SELECT column_name,column_name
-                #                      FROM table_name ORDER BY column_name,column_name
-                #                      ASC|DESC;(ASC为默认排序方式)
-                # 5.INSERT INTO语句---->INSERT INTO table_name
-                #                       VALUES (value1,value2,value3,...);
-                #                       &&
-                #                       INSERT INTO table_name (column1,column2,column3,...)
-                #                       VALUES (value1,value2,value3,...);
-                # 6.UPDATE语句------->UPDATE table_name
-                #                     SET column1=value1,column2=value2,...
-                #                     WHERE some_column=some_value;
-                #                     一定要写where语句，不然该表的所有数据都将被更新！！！！
-                # 7.DELETE语句-------->DELETE FROM table_name
-                #                      WHERE some_column=some_value;
-                #                      ***同样要写where语句，不然该表的所有数据都将被删除！！！！
-                #                      (DELETE FROM table_name;
-                #                      or
-                #                      DELETE * FROM table_name;)
-                # 8.LIMIT语句--------->SELECT column_name(s)
-                #                      FROM table_name
-                #                      LIMIT number;
-                # 9.LIKE语句---------->SELECT column_name(s)
-                #                      FROM table_name
-                #                      WHERE column_name LIKE pattern;
+                3.WHERE语句-------->SELECT column_name,column_name
+                                    FROM table_name WHERE column_name operator value;
+                4.GROUP BY语句----->SELECT column_name,column_name
+                                     FROM table_name ORDER BY column_name,column_name
+                                     ASC|DESC;(ASC为默认排序方式)
+                5.INSERT INTO语句---->INSERT INTO table_name
+                                      VALUES (value1,value2,value3,...);
+                                      &&
+                                      INSERT INTO table_name (column1,column2,column3,...)
+                                      VALUES (value1,value2,value3,...);
+                6.UPDATE语句------->UPDATE table_name
+                                    SET column1=value1,column2=value2,...
+                                    WHERE some_column=some_value;
+                                    一定要写where语句，不然该表的所有数据都将被更新！！！！
+                7.DELETE语句-------->DELETE FROM table_name
+                                     WHERE some_column=some_value;
+                                     ***同样要写where语句，不然该表的所有数据都将被删除！！！！
+                                     (DELETE FROM table_name;
+                                     or
+                                     DELETE * FROM table_name;)
+                8.LIMIT语句--------->SELECT column_name(s)
+                                     FROM table_name
+                                     LIMIT number;
+                9.LIKE语句---------->SELECT column_name(s)
+                                     FROM table_name
+                                     WHERE column_name LIKE pattern;
                 10.SQL通配符------->
                                     % 替代 0 个或多个字符
                                     _ 替代一个字符
                                     [charlist] 字符列中的任何单一字符
                                     [^charlist] or [!charlist] 不在字符列中的任何单一字符
-                # 11.IN操作符-------->
-                                    # SELECT column_name(s)
-                                    # FROM table_name
-                                    # WHERE column_name IN (value1,value2,...);
-                                    # &&
-                                    # SELECT column_name(s)
-                                    # FROM table_name
-                                    # WHERE column_name IN (select column from table_w3c where ...);
-                # 12.BETWEEN操作符----->
-                #                     SELECT column_name(s)
-                #                     FROM table_name
-                #                     WHERE column_name BETWEEN value1 AND value2;
+                11.IN操作符-------->
+                                    SELECT column_name(s)
+                                    FROM table_name
+                                    WHERE column_name IN (value1,value2,...);
+                                    &&
+                                    SELECT column_name(s)
+                                    FROM table_name
+                                    WHERE column_name IN (select column from table_w3c where ...);
+                12.BETWEEN操作符----->
+                                    SELECT column_name(s)
+                                    FROM table_name
+                                    WHERE column_name BETWEEN value1 AND value2;
                 13.Join连接--------->
-                    # 13.1 INNER JOIN关键字>
-                    #                     /***
-                    #                         INNER JOIN 与JOIN相同
-                    #                         关键字在表中存在至少一个匹配时返回行
-                    #                     ***/
-                    #                     SELECT column_name(s)
-                    #                     FROM table1
-                    #                     INNER JOIN table2
-                    #                     ON table1.column_name=table2.column_name;
-                    #                     or
-                    #                     SELECT column_name(s)
-                    #                     FROM table1
-                    #                     JOIN table2
-                    #                     ON table1.column_name=table2.column_name;
+                    13.1 INNER JOIN关键字>
+                                        /***
+                                            INNER JOIN 与JOIN相同
+                                            关键字在表中存在至少一个匹配时返回行
+                                        ***/
+                                        SELECT column_name(s)
+                                        FROM table1
+                                        INNER JOIN table2
+                                        ON table1.column_name=table2.column_name;
+                                        or
+                                        SELECT column_name(s)
+                                        FROM table1
+                                        JOIN table2
+                                        ON table1.column_name=table2.column_name;
 
 
-                    # 13.2 LEFT JOIN关键字>
-                    #                     /***
-                    #                         LEFT JOIN 关键字从左表（table1）返回所有的行，
-                    #                         即使右表（table2）中没有匹配。
-                    #                         如果右表中没有匹配，则结果为 NULL。
-                    #                     ***/
-                    #                     SELECT column_name(s)
-                    #                     FROM table1
-                    #                     LEFT JOIN table2
-                    #                     ON table1.column_name=table2.column_name;
-                    #                     or
-                    #                     SELECT column_name(s)
-                    #                     FROM table1
-                    #                     LEFT OUTER JOIN table2
-                    #                     ON table1.column_name=table2.column_name;
+                    13.2 LEFT JOIN关键字>
+                                        /***
+                                            LEFT JOIN 关键字从左表（table1）返回所有的行，
+                                            即使右表（table2）中没有匹配。
+                                            如果右表中没有匹配，则结果为 NULL。
+                                        ***/
+                                        SELECT column_name(s)
+                                        FROM table1
+                                        LEFT JOIN table2
+                                        ON table1.column_name=table2.column_name;
+                                        or
+                                        SELECT column_name(s)
+                                        FROM table1
+                                        LEFT OUTER JOIN table2
+                                        ON table1.column_name=table2.column_name;
 
-                    # 13.3 RIGHT JOIN关键字>
-                    #                     /***
-                    #                         RIGHT JOIN 关键字从右表（table2）返回所有的行，
-                    #                         即使左表（table1）中没有匹配。
-                    #                         如果左表中没有匹配，则结果为 NULL。
-                    #                     ***/
-                    #                     SELECT column_name(s)
-                    #                     FROM table1
-                    #                     ON table1.column_name=table2.column_name;
-                    #                     RIGHT JOIN table2
-                    #                     or
-                    #                     SELECT column_name(s)
-                    #                     FROM table1
-                    #                     RIGHT OUTER JOIN table2
-                    #                     ON table1.column_name=table2.column_name;
-                    # 13.4 FULL OUTER JOIN 关键字>
-                    #                         /***
-                    #                             FULL OUTER JOIN 关键字只要左表（table1）
-                    #                             和右表（table2）其中一个表中存在匹配，则返回行.
-                    #                             FULL OUTER JOIN 关键字结合了
-                    #                             LEFT JOIN 和 RIGHT JOIN 的结果。
-                    #                         ***/
-                    #                         SELECT column_name(s)
-                    #                         FULL OUTER JOIN table2
-                    #                         ON table1.column_name=table2.column_name;
+                    13.3 RIGHT JOIN关键字>
+                                        /***
+                                            RIGHT JOIN 关键字从右表（table2）返回所有的行，
+                                            即使左表（table1）中没有匹配。
+                                            如果左表中没有匹配，则结果为 NULL。
+                                        ***/
+                                        SELECT column_name(s)
+                                        FROM table1
+                                        ON table1.column_name=table2.column_name;
+                                        RIGHT JOIN table2
+                                        or
+                                        SELECT column_name(s)
+                                        FROM table1
+                                        RIGHT OUTER JOIN table2
+                                        ON table1.column_name=table2.column_name;
+                    13.4 FULL OUTER JOIN 关键字>
+                                            /***
+                                                FULL OUTER JOIN 关键字只要左表（table1）
+                                                和右表（table2）其中一个表中存在匹配，则返回行.
+                                                FULL OUTER JOIN 关键字结合了
+                                                LEFT JOIN 和 RIGHT JOIN 的结果。
+                                            ***/
+                                            SELECT column_name(s)
+                                            FULL OUTER JOIN table2
+                                            ON table1.column_name=table2.column_name;
                 14.UNION 操作符-------->
                                         /***
                                             UNION 操作符用于合并两个或多个 SELECT 语句的结果集。
@@ -167,28 +167,28 @@ DROP COLUMN column_name
 
 增：
     1.增加新数据库:create database [new_database_name];
-    2.增加数据表：create table [new_tables_name] (字段1 字段1类型 字段1属性,字段2 ...);
+    2.增加数据表：create table [new_tables_name] (column1 datatype ,column2 datataype,...);
     3.增加字段：alter table [table_name] ADD column_name datatype;
-    4.插入数据：----->插入所有值：
+    4.增加数据：----->插入所有值：
                                 INSERT INTO [table_name]
                                 VALUES (value1,value2,value3,...);
                ----->插入某些值：
                                INSERT INTO [table_name] (column1,column2,column3,...)
                                VALUES (value1,value2,value3,...);
 
-删除：
-    1.删除某一字段:alter table [table_name] DROP column_name
-    2.删除指定字段:DELETE FROM table_name WHERE some_column=some_value;
-    3.删除指定表：DELETE FROM table_name;
+删：
+    1.删除某一字段:alter table [table_name] DROP [column_name];
+    2.删除指定字段:DELETE FROM [table_name] WHERE some_column=some_value;
+    3.删除指定表：DELETE FROM [table_name];
                 or
                   DELETE * FROM [table_name];
-                  /***delete可以回退，保留表结构，能有条件的删除(where)***/
+                  /***delete可以回退，保留表结构不保留自增索引，能有条件的删除(where)***/
                 or
                   TRUNCATE table [table_name];
-                  /***truncate无法回退,保留表结构,删除速度比delete快***/
+                  /***truncate无法回退,保留表结构和自增索引,删除速度比delete快***/
                 or
                   DROP table [table_name];
-                  /***无法退回，表的结构、属性以及索引都不能保留***/
+                  /***drop无法退回，表的结构、属性以及索引都不能保留***/
 
 改：
     1.改数据表名：alter table [table_name] RENAME [new_table_name];
@@ -256,7 +256,7 @@ DROP COLUMN column_name
                                         ON table1.column_name=table2.column_name;
 
      13.关键字只要左表（table1）
-     和右表（table2）其中一个表中存在匹配，则返回行:
+        和右表（table2）其中一个表中存在匹配，则返回行:
                                                 SELECT column_name(s)
                                                 FULL OUTER JOIN table2
                                                 ON table1.column_name=table2.column_name;
