@@ -28,7 +28,7 @@ DROP COLUMN column_name
                                     &&
                                     SELECT * FROM table_name;
                 2.DISTINCK语句----->SELECT DISTINCT column_name,column_name
-                                    FROM table_name;
+                #                     FROM table_name;
                 3.WHERE语句-------->SELECT column_name,column_name
                                     FROM table_name WHERE column_name operator value;
                 4.GROUP BY语句----->SELECT column_name,column_name
@@ -144,7 +144,6 @@ DROP COLUMN column_name
                                         UNION
                                         SELECT column_name(s) FROM table2;
 
-                                        aadsf
                                             默认地，UNION 操作符选取不同的值。
                                             如果允许重复的值，请使用 UNION ALL。
                                         ***/
@@ -166,17 +165,125 @@ DROP COLUMN column_name
                             MIN():
                             MAX():
 
+增：
+    1.增加新数据库:create database [new_database_name];
+    2.增加数据表：create table [new_tables_name] (column1 datatype ,column2 datataype,...);
+    3.增加字段：alter table [table_name] ADD column_name datatype;
+    4.增加数据：----->插入所有值：
+                                INSERT INTO [table_name]
+                                VALUES (value1,value2,value3,...);
+               ----->插入某些值：
+                               INSERT INTO [table_name] (column1,column2,column3,...)
+                               VALUES (value1,value2,value3,...);
 
+删：
+    1.删除某一字段:alter table [table_name] DROP [column_name];
+    2.删除指定字段:DELETE FROM [table_name] WHERE some_column=some_value;
+    3.删除指定表：DELETE FROM [table_name];
+                or
+                  DELETE * FROM [table_name];
+                  /***delete可以回退，保留表结构不保留自增索引，能有条件的删除(where)***/
+                or
+                  TRUNCATE table [table_name];
+                  /***truncate无法回退,保留表结构和自增索引,删除速度比delete快***/
+                or
+                  DROP table [table_name];
+                  /***drop无法退回，表的结构、属性以及索引都不能保留***/
 
+改：
+    1.改数据表名：alter table [table_name] RENAME [new_table_name];
+    2.改某字段：alter table [table_name] CHANGE [column_name] [new_colum_name] [datatype];
+    3.改表中数据值：update [table_name] set [column_name]=[new_value] where [column_name] operator value;
 
+查：
+    1.查看表结构：describe [table_name];
+    2.从表中获取指定数据： SELECT [column_name],[column_name] FROM table_name;
+                         SELECT * FROM [table_name];
+    3.从表中获取去重数据：SELECT DISTINCT [column_name],[column_name]
+                        FROM [table_name];
+    4.从表中获取满足指定条件的数据：SELECT [column_name],[column_name]
+                                 FROM [table_name] WHERE [column_name] operator value;
+    5.选择并按指定字段排序：SELECT column_name,column_name
+                          FROM table_name ORDER BY column_name,column_name
+                          ASC|DESC;(ASC为默认排序方式)
+    6.规定要返回的记录的数目：SELECT column_name(s) FROM [table_name] LIMIT number;
+    7.搜索列中的指定模式("模糊匹配")：SELECT column_name(s)
+                                    FROM table_name
+                                    WHERE column_name LIKE pattern;
+    8.在where中规定多值：SELECT column_name(s)
+                        FROM table_name
+                        WHERE column_name IN (value1,value2,...);
+                        &&
+                        SELECT column_name(s)
+                        FROM table_name
+                        WHERE column_name IN (select column from table_w3c where ...);
+    9.选取介于两个值之间的数据范围：SELECT column_name(s)
+                                  FROM table_name
+                                  WHERE column_name BETWEEN value1 AND value2;
 
+    10.关键字在表中存在至少一个匹配时返回行: SELECT column_name(s)
+                                          INNER JOIN table2
+                                          FROM table1
+                                          ON table1.column_name=table2.column_name;
+                                          or
+                                          SELECT column_name(s)
+                                          FROM table1
+                                          JOIN table2
+    11.关键字从左表（table1）返回所有的行，
+       即使右表（table2）中没有匹配,
+       如果右表中没有匹配，则结果为 NULL:
+                                       SELECT column_name(s)
+                                       FROM table1
+                                       LEFT JOIN table2
+                                       ON table1.column_name=table2.column_name;
+                                       or
+                                       SELECT column_name(s)
+                                       FROM table1
+                                       LEFT OUTER JOIN table2
+                                       ON table1.column_name=table2.column_name;                                    ON table1.column_name=table2.column_name;
 
+     12.关键字从右表（table2）返回所有的行，
+        即使左表（table1）中没有匹配。
+        如果左表中没有匹配，则结果为 NULL:
+                                        SELECT column_name(s)
+                                        FROM table1
+                                        ON table1.column_name=table2.column_name;
+                                        RIGHT JOIN table2
+                                        or
+                                        SELECT column_name(s)
+                                        FROM table1
+                                        RIGHT OUTER JOIN table2
+                                        ON table1.column_name=table2.column_name;
 
+     13.关键字只要左表（table1）
+        和右表（table2）其中一个表中存在匹配，则返回行:
+                                                SELECT column_name(s)
+                                                FULL OUTER JOIN table2
+                                                ON table1.column_name=table2.column_name;
 
+     14.合并两个或多个 SELECT 语句的结果集:
+                                         SELECT column_name(s) FROM table1
+                                         UNION
+                                         SELECT column_name(s) FROM table2;
 
+                                         or
+                                         SELECT column_name(s) FROM table1
+                                         UNION ALL
+                                         SELECT column_name(s) FROM table2;
+                                         /***允许重复值***/
 
+    15.聚合查询：
+                AVG():
+                      --->SELECT AVG(column_name) FROM table_name;
 
-
+                COUNT():
+                      --->SELECT COUNT(column_name) FROM table_name;
+                          SELECT COUNT(*) FROM table_name;
+                FIRST():
+                LAST():
+                SUM():
+                MIN():
+                MAX():
 
 
 
